@@ -19,10 +19,10 @@ class ScrapingData:
     province: str = 'NULL'
     school_name: str = 'NULL'
     ouac_code: str = 'NULL'
-    degrees: str = 'NULL'
+    degrees: Optional[List[str]] = None
     coop_option: bool = False
     req_courses: Optional[List[str]] = None
-    admission_range: str = 'NULL'
+    admission_range: str = "NULL"
     enrolment: int = 0
 
 
@@ -30,3 +30,14 @@ class ScrapingData:
 class ReturnData:
     entrance_chance: str = 'LOW CHANCE'
     reviews: Optional[List[str]] = None
+
+
+@dataclass
+class Programs:
+    name: str = 'NULL'
+    link: str = 'NULL'
+    information: Optional[ScrapingData] = None
+
+    def __dict__(self):
+        return {'name': self.name, 'link': self.link,
+                'information': self.information.__dict__}
