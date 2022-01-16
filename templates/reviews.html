@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='/Resources/CaPredictorIcon.png') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/Resources/fmp.png') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <title>FindMyProgram</title>
@@ -380,17 +380,47 @@
 <!-- Footer and Credits -->
 
 <footer class="col-sm-12 card-footer" style="margin-top: 2%">
+    <script>
+            function openReviews() {
+                location.href = "{{ url_for('add_review') }}"
+            }
+            function openPredictor() {
+                location.href = "{{ url_for('index') }}"
+            }
+    </script>
     <div class="row">
-        <div class="col-sm-4 my-auto" style="padding-bottom: 0.5%">
+        <div class="col-sm-12">
+            <h1></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 my-auto" style="padding-bottom: 0.5%">
             <a href="https://github.com/AliRZ-02/deltahacks2022">
                 <img src="{{ url_for('static', filename='/Resources/github.png') }}" style="display: flex;
             align-items: center; flex-wrap: wrap;" class="d-block mx-auto">
             </a>
         </div>
-        <div class="col-sm-8 my-auto">
+        <div class="col-sm-2 my-auto" style="padding-bottom: 0.5%">
+            <a href="https://findmyprogram.tech">
+                <img src="{{ url_for('static', filename='/Resources/fmp.png') }}" style="display: flex;
+            align-items: center; flex-wrap: wrap;" class="d-block mx-auto" width="120px" height="120px">
+            </a>
+        </div>
+        <div class="col-sm-2 text-center my-auto">
+            <button class="btn btn-light btn-block my-auto"
+                style="height: 20%" onclick="openReviews()">
+            Reviews
+            </button>
+        </div>
+        <div class="col-sm-2 text-center my-auto">
+            <button class="btn btn-dark btn-block my-auto"
+                style="height: 20%" onclick="openPredictor()">
+            Predictor
+            </button>
+        </div>
+        <div class="col-sm my-auto text-center">
             <h1 style="font-size: large; text-align: center; margin-top: 0.5%">
-                Developed by Ali Raza Zaidi and Asher Khan.
-                To find out more, check out the <a href="https://github.com/AliRZ-02/deltahacks2022"> GitHub </a> repository
+                Developed by Ali Raza Zaidi and Asher Khan
             </h1>
         </div>
     </div>
