@@ -9,30 +9,6 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <title>FindMyProgram</title>
 
-    <script type='text/javascript'>
-        function addFields(){
-            // Number of inputs to create
-            var number = document.getElementById("courses").value;
-            // Container <div> where dynamic content will be placed
-            var container = document.getElementById("container");
-            // Clear previous contents of the container
-            while (container.hasChildNodes()) {
-                container.removeChild(container.lastChild);
-            }
-            for (i=0;i<number;i++){
-                // Append a node with a random text
-                container.appendChild(document.createTextNode("Member " + (i+1)));
-                // Create an <input> element, set its type and name attributes
-                var input = document.createElement("input");
-                input.type = "text";
-                input.name = "member" + i;
-                container.appendChild(input);
-                // Append a line break
-                container.appendChild(document.createElement("br"));
-            }
-        }
-    </script>
-
     <!--    I Used Bootstrap for most styling, however, for @media queries, I ran into some issues, so I moved them all to
  the header section -->
     <style>
@@ -71,96 +47,244 @@
 
 <div class="container-fluid p-0" style="background:#2d3436; overflow: hidden" >
     <div class="row">
-
-        <div class="col-sm-4">
-            <img src="{{ url_for('static', filename='/Resources/CaPredictorIcon.png') }}" alt="" class="rounded mx-auto d-block">
-        </div>
-
-        <div class="col-sm-8 my-auto">
+        <div class="col-sm-12 my-auto">
             <h1 style="color: white; font-weight: lighter;
-                margin-top: 0; font-size: 10vw;}"> FindMyProgram </h1>
+                margin-top: 0; font-size: 10vw; text-align: center;"> FindMyProgram </h1>
         </div>
-
-    </div>
-</div>
-
-<!-- Manual Mode Toggle and Label section -->
-
-<div class="container-fluid border border-white" style="background: #c0392b; overflow: hidden">
-    <div class="row" style="overflow: hidden; padding-top:0.5%; padding-bottom: 0.5%">
-        <div class="col-sm-6 my-auto" style="overflow: hidden">
-            <h3 style="text-align: center; color: white;  overflow: hidden;
-             font-weight: lighter" id="state" >
-
-                <script>
-                    function toggled() {
-                        check = document.getElementById("checkboxItem").checked
-                        if (check === true){
-                            document.getElementById("state").innerHTML = "Manual Mode";
-                            location.href= "{{ url_for('index') }}";
-
-                        }else{
-                            document.getElementById("state").innerHTML = "Manual Mode";
-                        }
-                    }
-                </script> Manual Mode </h3>
-
+        <div class="col-sm-12">
+            <h1></h1>
         </div>
-
-        <label class="switch col-sm-0 my-auto d-block mx-auto" rel="script"
-               id="toggle-switch" onchange="toggled()">
-            <input type="checkbox" id="checkboxItem">
-            <span class="slider round"></span>
-        </label>
-
+        <div class="col-sm-12">
+            <h1></h1>
+        </div>
+        <div class="col-sm-12">
+            <h1></h1>
+        </div>
     </div>
 </div>
 
 <!-- Player Input Information Form is Here -->
 
-<div class="container-fluid p-0 border-white" style="overflow: hidden; margin-top: 2%; margin-bottom: 2%">
+<div class="container-fluid p-0 border-white" style="overflow: hidden; margin-top: 2%; margin-bottom: 2% background: #c0392b">
     <div class="form-group my-auto" style="font-size: small">
         <form class="row" action="/" method="POST" style="width: 100%; margin-left: 0.25%" autocomplete="off">
-            <select name="school" id="school" class="col-sm-3 form-select" style="text-align-last: center; text-align: center">
-                <option>McMaster University</option>
-            </select>
-            <select name="program" id="program" class="col-sm-3 form-select" style="text-align-last: center; text-align: center" autocomplete="on">
-                <option>Arts & Science</option>
-                <option>Bachelor of Technology</option>
-                <option>Business</option>
-                <option>Chemical & Physical Sciences</option>
-                <option>Computer Science</option>
-                <option>Economics I</option>
-                <option>Engineering</option>
-                <option>Environmental & Earth Sciences</option>
-                <option>Health & Society</option>
-                <option>Health Sciences</option>
-                <option>Kinesiology</option>
-                <option>Humanities</option>
-                <option>Integrated Arts</option>
-                <option>Integrated Biomedical Engineering</option>
-                <option>Integrated Business & Humanities</option>
-                <option>Life Sciences</option>
-                <option>Mathematics & Statistics</option>
-                <option>Medical Radiation Sciences</option>
-                <option>Midwifery</option>
-                <option>Music</option>
-                <option>Nursing</option>
-                <option>Social Sciences</option>
-            </select>
-            <input class="col-sm-3 form-control" type="text" name="" id = "player_name" placeholder="Player Name" style="text-align: center" required>
-            <input class="col-sm-3 form-control" type="number" max="8" min="1"
-                   name="length" id="length" placeholder="Contract Length"
-                   style="text-align: center" required>
-            <select name="resign" id="resign" class="col-sm-3 form-control" style="text-align-last: center; text-align: center">
-                <option>Re-sign</option>
-                <option>Free Agent</option>
-            </select>
-            <input class="col-sm-3 form-control" type="number" min="0" max="8" id="courses" name="courses" placeholder="Number of Courses"
-                   style="text-align-last: center; text-align: center">Number of Courses<br />
-            <input type="submit" value="Add Courses" class="col-sm-3 btn btn-primary"
-                   id="search" onclick="addFields()">
-            <div id="container"/>
+            <div class="container p-0">
+                <div class="row">
+                    <div class="col-sm">
+                        <select name="school" id="school" class="form-control" style="text-align-last: center; text-align: center">
+                            <option>McMaster University</option>
+                        </select>
+                    </div>
+                    <div class="col-sm">
+                        <select name="program" id="program" class="form-control" style="text-align-last: center; text-align: center"
+                            autocomplete="on">
+                            <option>Arts & Science</option><option>Bachelor of Technology</option><option>Business</option><option>Chemical & Physical Sciences</option>
+                            <option>Computer Science</option><option>Economics I</option><option>Engineering</option><option>Environmental & Earth Sciences</option>
+                            <option>Health & Society</option><option>Health Sciences</option><option>Kinesiology</option><option>Humanities</option>
+                            <option>Integrated Arts</option><option>Integrated Biomedical Engineering</option><option>Integrated Business & Humanities</option>
+                            <option>Life Sciences</option><option>Mathematics & Statistics</option><option>Medical Radiation Sciences</option>
+                            <option>Midwifery</option><option>Music</option><option>Nursing</option><option>Social Sciences</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row"><div><h1></h1></div></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1 style="text-align: center">Courses</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <select name="course_1" id="course_1" class="form-control" style="text-align-last: center; text-align: center" autocomplete="on">
+                            <option>ATC4M</option><option>ADA4M</option><option>AEA4O</option><option>ASM4M</option><option>AMU4M</option>
+                            <option>AVI4M</option><option>BAT4M</option><option>BBB4M</option><option>BOH4M</option><option>CIA4U</option>
+                            <option>CGW4U</option><option>CGU4M</option><option>CGO4M</option><option>CGR4M</option><option>CHI4U</option>
+                            <option>CHY4U</option><option>CLN4U</option><option>CPW4U</option><option>ENG4U</option><option>ETS4U</option>
+                            <option>EWC4U</option><option>EBT4O</option><option>FSF4U</option><option>FSF4O</option><option>FEF4U</option>
+                            <option>FIF4U</option><option>FIF4O</option><option>GLS4O</option><option>GLE4O</option><option>GLN4O</option>
+                            <option>HSE4M</option><option>HSC4M</option><option>HNB4M</option><option>HFA4U</option><option>HHS4U</option>
+                            <option>HHG4M</option><option>HIP4O</option><option>HSB4U</option><option>HZT4U</option><option>ICS4U</option>
+                            <option>IDC4U</option><option>IDP4U</option><option>IDC4O</option><option>IDP4O</option><option>LVV4U</option>
+                            <option>MHF4U</option><option>MCV4U</option><option>MDM4U</option><option>NDW4M</option><option>NDG4M</option>
+                            <option>PPL4O</option><option>PSK4U</option><option>PLF4M</option><option>SNC4M</option><option>SBI4U</option>
+                            <option>SCH4U</option><option>SES4U</option><option>SPH4U</option><option>TGJ4M</option><option>TGJ4O</option>
+                            <option>TEJ4M</option><option>THJ4M</option><option>TPJ4M</option><option>TMJ4M</option><option>TDJ4M</option>
+                            <option>TDJ4O</option><option>NONE</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="number" max="100" min="1" name="course_1_grade" id="course_1_grade"
+                               placeholder="80" style="text-align: center" required>
+                    </div>
+                    <div class="col-sm-3">
+                        <select name="course_2" id="course_2" class="form-control" style="text-align-last: center; text-align: center"
+                                autocomplete="on">
+                            <option>ATC4M</option><option>ADA4M</option><option>AEA4O</option><option>ASM4M</option><option>AMU4M</option>
+                            <option>AVI4M</option><option>BAT4M</option><option>BBB4M</option><option>BOH4M</option><option>CIA4U</option>
+                            <option>CGW4U</option><option>CGU4M</option><option>CGO4M</option><option>CGR4M</option><option>CHI4U</option>
+                            <option>CHY4U</option><option>CLN4U</option><option>CPW4U</option><option>ENG4U</option><option>ETS4U</option>
+                            <option>EWC4U</option><option>EBT4O</option><option>FSF4U</option><option>FSF4O</option><option>FEF4U</option>
+                            <option>FIF4U</option><option>FIF4O</option><option>GLS4O</option><option>GLE4O</option><option>GLN4O</option>
+                            <option>HSE4M</option><option>HSC4M</option><option>HNB4M</option><option>HFA4U</option><option>HHS4U</option>
+                            <option>HHG4M</option><option>HIP4O</option><option>HSB4U</option><option>HZT4U</option><option>ICS4U</option>
+                            <option>IDC4U</option><option>IDP4U</option><option>IDC4O</option><option>IDP4O</option><option>LVV4U</option>
+                            <option>MHF4U</option><option>MCV4U</option><option>MDM4U</option><option>NDW4M</option><option>NDG4M</option>
+                            <option>PPL4O</option><option>PSK4U</option><option>PLF4M</option><option>SNC4M</option><option>SBI4U</option>
+                            <option>SCH4U</option><option>SES4U</option><option>SPH4U</option><option>TGJ4M</option><option>TGJ4O</option>
+                            <option>TEJ4M</option><option>THJ4M</option><option>TPJ4M</option><option>TMJ4M</option><option>TDJ4M</option>
+                            <option>TDJ4O</option><option>NONE</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="number" max="100" min="1" name="course_2_grade" id="course_2_grade"
+                               placeholder="80" style="text-align: center" required>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-sm-3">
+                        <select name="course_3" id="course_3" class="form-control" style="text-align-last: center; text-align: center"
+                                autocomplete="on">
+                            <option>ATC4M</option><option>ADA4M</option><option>AEA4O</option><option>ASM4M</option><option>AMU4M</option>
+                            <option>AVI4M</option><option>BAT4M</option><option>BBB4M</option><option>BOH4M</option><option>CIA4U</option>
+                            <option>CGW4U</option><option>CGU4M</option><option>CGO4M</option><option>CGR4M</option><option>CHI4U</option>
+                            <option>CHY4U</option><option>CLN4U</option><option>CPW4U</option><option>ENG4U</option><option>ETS4U</option>
+                            <option>EWC4U</option><option>EBT4O</option><option>FSF4U</option><option>FSF4O</option><option>FEF4U</option>
+                            <option>FIF4U</option><option>FIF4O</option><option>GLS4O</option><option>GLE4O</option><option>GLN4O</option>
+                            <option>HSE4M</option><option>HSC4M</option><option>HNB4M</option><option>HFA4U</option><option>HHS4U</option>
+                            <option>HHG4M</option><option>HIP4O</option><option>HSB4U</option><option>HZT4U</option><option>ICS4U</option>
+                            <option>IDC4U</option><option>IDP4U</option><option>IDC4O</option><option>IDP4O</option><option>LVV4U</option>
+                            <option>MHF4U</option><option>MCV4U</option><option>MDM4U</option><option>NDW4M</option><option>NDG4M</option>
+                            <option>PPL4O</option><option>PSK4U</option><option>PLF4M</option><option>SNC4M</option><option>SBI4U</option>
+                            <option>SCH4U</option><option>SES4U</option><option>SPH4U</option><option>TGJ4M</option><option>TGJ4O</option>
+                            <option>TEJ4M</option><option>THJ4M</option><option>TPJ4M</option><option>TMJ4M</option><option>TDJ4M</option>
+                            <option>TDJ4O</option><option>NONE</option>
+                        </select></div>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="number" max="100" min="1" name="course_3_grade" id="course_3_grade"
+                               placeholder="80" style="text-align: center" required>
+                    </div>
+                    <div class="col-sm-3">
+                        <select name="course_4" id="course_4" class="form-control" style="text-align-last: center; text-align: center"
+                                autocomplete="on">
+                            <option>ATC4M</option><option>ADA4M</option><option>AEA4O</option><option>ASM4M</option><option>AMU4M</option>
+                            <option>AVI4M</option><option>BAT4M</option><option>BBB4M</option><option>BOH4M</option><option>CIA4U</option>
+                            <option>CGW4U</option><option>CGU4M</option><option>CGO4M</option><option>CGR4M</option><option>CHI4U</option>
+                            <option>CHY4U</option><option>CLN4U</option><option>CPW4U</option><option>ENG4U</option><option>ETS4U</option>
+                            <option>EWC4U</option><option>EBT4O</option><option>FSF4U</option><option>FSF4O</option><option>FEF4U</option>
+                            <option>FIF4U</option><option>FIF4O</option><option>GLS4O</option><option>GLE4O</option><option>GLN4O</option>
+                            <option>HSE4M</option><option>HSC4M</option><option>HNB4M</option><option>HFA4U</option><option>HHS4U</option>
+                            <option>HHG4M</option><option>HIP4O</option><option>HSB4U</option><option>HZT4U</option><option>ICS4U</option>
+                            <option>IDC4U</option><option>IDP4U</option><option>IDC4O</option><option>IDP4O</option><option>LVV4U</option>
+                            <option>MHF4U</option><option>MCV4U</option><option>MDM4U</option><option>NDW4M</option><option>NDG4M</option>
+                            <option>PPL4O</option><option>PSK4U</option><option>PLF4M</option><option>SNC4M</option><option>SBI4U</option>
+                            <option>SCH4U</option><option>SES4U</option><option>SPH4U</option><option>TGJ4M</option><option>TGJ4O</option>
+                            <option>TEJ4M</option><option>THJ4M</option><option>TPJ4M</option><option>TMJ4M</option><option>TDJ4M</option>
+                            <option>TDJ4O</option><option>NONE</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="number" max="100" min="1" name="course_4_grade" id="course_4_grade"
+                               placeholder="80" style="text-align: center" required>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="col-sm-3">
+                        <select name="course_5" id="course_5" class="form-control" style="text-align-last: center; text-align: center"
+                                autocomplete="on">
+                            <option>ATC4M</option><option>ADA4M</option><option>AEA4O</option><option>ASM4M</option><option>AMU4M</option>
+                            <option>AVI4M</option><option>BAT4M</option><option>BBB4M</option><option>BOH4M</option><option>CIA4U</option>
+                            <option>CGW4U</option><option>CGU4M</option><option>CGO4M</option><option>CGR4M</option><option>CHI4U</option>
+                            <option>CHY4U</option><option>CLN4U</option><option>CPW4U</option><option>ENG4U</option><option>ETS4U</option>
+                            <option>EWC4U</option><option>EBT4O</option><option>FSF4U</option><option>FSF4O</option><option>FEF4U</option>
+                            <option>FIF4U</option><option>FIF4O</option><option>GLS4O</option><option>GLE4O</option><option>GLN4O</option>
+                            <option>HSE4M</option><option>HSC4M</option><option>HNB4M</option><option>HFA4U</option><option>HHS4U</option>
+                            <option>HHG4M</option><option>HIP4O</option><option>HSB4U</option><option>HZT4U</option><option>ICS4U</option>
+                            <option>IDC4U</option><option>IDP4U</option><option>IDC4O</option><option>IDP4O</option><option>LVV4U</option>
+                            <option>MHF4U</option><option>MCV4U</option><option>MDM4U</option><option>NDW4M</option><option>NDG4M</option>
+                            <option>PPL4O</option><option>PSK4U</option><option>PLF4M</option><option>SNC4M</option><option>SBI4U</option>
+                            <option>SCH4U</option><option>SES4U</option><option>SPH4U</option><option>TGJ4M</option><option>TGJ4O</option>
+                            <option>TEJ4M</option><option>THJ4M</option><option>TPJ4M</option><option>TMJ4M</option><option>TDJ4M</option>
+                            <option>TDJ4O</option><option>NONE</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="number" max="100" min="1" name="course_5_grade" id="course_5_grade"
+                               placeholder="80" style="text-align: center" required>
+                    </div>
+                    <div class="col-sm-3">
+                        <select name="course_6" id="course_6" class="form-control" style="text-align-last: center; text-align: center"
+                                autocomplete="on">
+                            <option>ATC4M</option><option>ADA4M</option><option>AEA4O</option><option>ASM4M</option><option>AMU4M</option>
+                            <option>AVI4M</option><option>BAT4M</option><option>BBB4M</option><option>BOH4M</option><option>CIA4U</option>
+                            <option>CGW4U</option><option>CGU4M</option><option>CGO4M</option><option>CGR4M</option><option>CHI4U</option>
+                            <option>CHY4U</option><option>CLN4U</option><option>CPW4U</option><option>ENG4U</option><option>ETS4U</option>
+                            <option>EWC4U</option><option>EBT4O</option><option>FSF4U</option><option>FSF4O</option><option>FEF4U</option>
+                            <option>FIF4U</option><option>FIF4O</option><option>GLS4O</option><option>GLE4O</option><option>GLN4O</option>
+                            <option>HSE4M</option><option>HSC4M</option><option>HNB4M</option><option>HFA4U</option><option>HHS4U</option>
+                            <option>HHG4M</option><option>HIP4O</option><option>HSB4U</option><option>HZT4U</option><option>ICS4U</option>
+                            <option>IDC4U</option><option>IDP4U</option><option>IDC4O</option><option>IDP4O</option><option>LVV4U</option>
+                            <option>MHF4U</option><option>MCV4U</option><option>MDM4U</option><option>NDW4M</option><option>NDG4M</option>
+                            <option>PPL4O</option><option>PSK4U</option><option>PLF4M</option><option>SNC4M</option><option>SBI4U</option>
+                            <option>SCH4U</option><option>SES4U</option><option>SPH4U</option><option>TGJ4M</option><option>TGJ4O</option>
+                            <option>TEJ4M</option><option>THJ4M</option><option>TPJ4M</option><option>TMJ4M</option><option>TDJ4M</option>
+                            <option>TDJ4O</option><option>NONE</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="number" max="100" min="1" name="course_6_grade" id="course_6_grade"
+                               placeholder="80" style="text-align: center" required>
+                    </div>
+                </div>
+                <div class="row"><div><h1></h1></div></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1 style="text-align: center">Extra Curriculars</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input class="form-control" type="text" name="extra_curriculars" id="extra_curriculars"
+                               placeholder="Enter a list of the extra-curriculars you have participated in here, seperated by commas"
+                               style="text-align: center" >
+                    </div>
+                </div>
+                <div class="row"><div><h1></h1></div></div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1 style="text-align: center">Miscellaneous</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-group col-sm-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">IB</span>
+                        </div>
+                        <select name="ib" id="ib" class="form-control" style="text-align: center">
+                            <option>YES</option>
+                            <option>NO</option>
+                        </select>
+                    </div>
+                    <div class="input-group col-sm-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">AP</span>
+                        </div>
+                        <select name="ap" id="ap" class="form-control" style="text-align: center">
+                            <option>YES</option>
+                            <option>NO</option>
+                        </select>
+                    </div>
+                    <div class="input-group col-sm-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Want Co-op</span>
+                        </div>
+                        <select name="co-op" id="co-op" class="form-control" style="text-align: center">
+                            <option>YES</option>
+                            <option>NO</option>
+                        </select>
+                    </div>
+                    <div class="col-sm">
+                        <input type="submit" value="Find Chances" class="btn btn-primary btn-block" id="search">
+                    </div>
+                </div>
+            </div>
         </form>
 
     </div>
@@ -259,15 +383,15 @@ padding-left: 2vw; padding-right: 2vw; overflow: hidden">
 <footer class="col-sm-12 card-footer" style="margin-top: 2%">
     <div class="row">
         <div class="col-sm-4 my-auto" style="padding-bottom: 0.5%">
-            <a href="https://github.com/AliRZ-02">
+            <a href="https://github.com/AliRZ-02/deltahacks2022">
                 <img src="{{ url_for('static', filename='/Resources/github.png') }}" style="display: flex;
             align-items: center; flex-wrap: wrap;" class="d-block mx-auto">
             </a>
         </div>
         <div class="col-sm-8 my-auto">
             <h1 style="font-size: large; text-align: center; margin-top: 0.5%">
-                Developed by Ali Raza Zaidi and Danyal Zaidi.
-                To find out more, check out the <a href="https://github.com/AliRZ-02/CaPredictor"> GitHub </a> repository
+                Developed by Ali Raza Zaidi and Asher Khan.
+                To find out more, check out the <a href="https://github.com/AliRZ-02/deltahacks2022"> GitHub </a> repository
             </h1>
         </div>
     </div>

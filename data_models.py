@@ -9,23 +9,13 @@ class Course:
 
 
 @dataclass
-class ExtraCurricular:
-    name: str
-    type: str
-    hours: float
-
-
-@dataclass
 class UserData:
     courses: List[Course]
-    extra_curriculars: List[ExtraCurricular]
+    extra_curriculars: List[str]
     want_coop: bool = False
     program_of_choice: str = 'Mathematics'
     is_ap: bool = False
     is_ib: bool = False
-    is_esl: bool = False
-    location: Optional[str] = None
-    are_international: bool = False
 
 
 @dataclass
