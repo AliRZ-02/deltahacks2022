@@ -1,4 +1,5 @@
 import json
+import pathlib
 import re
 import time
 import bs4
@@ -121,9 +122,14 @@ def mcmaster_programs():
     return fetch_programs('https://future.mcmaster.ca/programs/')
 
 
-progs = mcmaster_programs()
+# progs = mcmaster_programs()
 
-for prog in progs:
-    output_file = f'programs/{legal_name(prog.name.lower())}_program.json'
-    with open(output_file, 'w') as outfile:
-        json.dump(prog.__dict__(), outfile)
+# for prog in progs:
+#     output_file = f'programs/{legal_name(prog.name.lower())}_program.json'
+#     with open(output_file, 'w') as outfile:
+#         json.dump(prog.__dict__(), outfile)
+
+path = pathlib.Path('programs')
+files = os.listdir(path)
+for file in files:
+    os.rename(f'{path}/{file}', f'{path}/{file.replace("_program", "")}')

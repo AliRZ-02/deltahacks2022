@@ -67,9 +67,13 @@
 
 <div class="container-fluid p-0 border-white" style="overflow: hidden; margin-top: 2%; margin-bottom: 2% background: #c0392b">
     <div class="form-group my-auto" style="font-size: small">
-        <form class="row" action="/" method="POST" style="width: 100%; margin-left: 0.25%" autocomplete="off">
+        <form class="row" action="/reviews" method="POST" style="width: 100%; margin-left: 0.25%" autocomplete="off">
             <div class="container p-0">
                 <div class="row">
+                    <div class="col-sm">
+                        <input class="form-control" name="name" id="name" style="text-align-last: center; text-align: center" type="text" required
+                               placeholder="NAME">
+                    </div>
                     <div class="col-sm">
                         <select name="school" id="school" class="form-control" style="text-align-last: center; text-align: center">
                             <option>McMaster University</option>
@@ -95,8 +99,8 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-3">
-                        <select name="course_1" id="course_1" class="form-control" style="text-align-last: center; text-align: center" autocomplete="on">
-                            <option>NONE</option>
+                        <select name="course_1" id="course_1" class="form-control" style="text-align-last: center; text-align: center"
+                                autocomplete="on" required>
                             <option>ATC4M</option><option>ADA4M</option><option>AEA4O</option><option>ASM4M</option><option>AMU4M</option>
                             <option>AVI4M</option><option>BAT4M</option><option>BBB4M</option><option>BOH4M</option><option>CIA4U</option>
                             <option>CGW4U</option><option>CGU4M</option><option>CGO4M</option><option>CGR4M</option><option>CHI4U</option>
@@ -114,12 +118,12 @@
                         </select>
                     </div>
                     <div class="col-sm-3">
-                        <input class="form-control" type="number" max="100" min="1" name="course_1_grade" id="course_1_grade"
-                               placeholder="80" style="text-align: center">
+                        <input class="form-control" type="number" max="100" min="0" name="course_1_grade" id="course_1_grade"
+                               placeholder="80" style="text-align: center" required>
                     </div>
                     <div class="col-sm-3">
                         <select name="course_2" id="course_2" class="form-control" style="text-align-last: center; text-align: center"
-                                autocomplete="on"><option>NONE</option>
+                                autocomplete="on" required>
                             <option>ATC4M</option><option>ADA4M</option><option>AEA4O</option><option>ASM4M</option><option>AMU4M</option>
                             <option>AVI4M</option><option>BAT4M</option><option>BBB4M</option><option>BOH4M</option><option>CIA4U</option>
                             <option>CGW4U</option><option>CGU4M</option><option>CGO4M</option><option>CGR4M</option><option>CHI4U</option>
@@ -137,13 +141,13 @@
                         </select>
                     </div>
                     <div class="col-sm-3">
-                        <input class="form-control" type="number" max="100" min="1" name="course_2_grade" id="course_2_grade"
-                               placeholder="80" style="text-align: center">
+                        <input class="form-control" type="number" max="100" min="0" name="course_2_grade" id="course_2_grade"
+                               placeholder="80" style="text-align: center" required>
                     </div>
                     <div class="w-100"></div>
                     <div class="col-sm-3">
                         <select name="course_3" id="course_3" class="form-control" style="text-align-last: center; text-align: center"
-                                autocomplete="on"><option>NONE</option>
+                                autocomplete="on" required>
                             <option>ATC4M</option><option>ADA4M</option><option>AEA4O</option><option>ASM4M</option><option>AMU4M</option>
                             <option>AVI4M</option><option>BAT4M</option><option>BBB4M</option><option>BOH4M</option><option>CIA4U</option>
                             <option>CGW4U</option><option>CGU4M</option><option>CGO4M</option><option>CGR4M</option><option>CHI4U</option>
@@ -160,12 +164,12 @@
                             <option>TDJ4O</option>
                         </select></div>
                     <div class="col-sm-3">
-                        <input class="form-control" type="number" max="100" min="1" name="course_3_grade" id="course_3_grade"
-                               placeholder="80" style="text-align: center">
+                        <input class="form-control" type="number" max="100" min="0" name="course_3_grade" id="course_3_grade"
+                               placeholder="80" style="text-align: center" required>
                     </div>
                     <div class="col-sm-3">
                         <select name="course_4" id="course_4" class="form-control" style="text-align-last: center; text-align: center"
-                                autocomplete="on"><option>NONE</option>
+                                autocomplete="on" required>
                             <option>ATC4M</option><option>ADA4M</option><option>AEA4O</option><option>ASM4M</option><option>AMU4M</option>
                             <option>AVI4M</option><option>BAT4M</option><option>BBB4M</option><option>BOH4M</option><option>CIA4U</option>
                             <option>CGW4U</option><option>CGU4M</option><option>CGO4M</option><option>CGR4M</option><option>CHI4U</option>
@@ -183,14 +187,13 @@
                         </select>
                     </div>
                     <div class="col-sm-3">
-                        <input class="form-control" type="number" max="100" min="1" name="course_4_grade" id="course_4_grade"
-                               placeholder="80" style="text-align: center">
+                        <input class="form-control" type="number" max="100" min="0" name="course_4_grade" id="course_4_grade"
+                               placeholder="80" style="text-align: center" required>
                     </div>
                     <div class="w-100"></div>
                     <div class="col-sm-3">
                         <select name="course_5" id="course_5" class="form-control" style="text-align-last: center; text-align: center"
-                                autocomplete="on">
-                            <option>NONE</option>
+                                autocomplete="on" required>
                             <option>ATC4M</option><option>ADA4M</option><option>AEA4O</option><option>ASM4M</option><option>AMU4M</option>
                             <option>AVI4M</option><option>BAT4M</option><option>BBB4M</option><option>BOH4M</option><option>CIA4U</option>
                             <option>CGW4U</option><option>CGU4M</option><option>CGO4M</option><option>CGR4M</option><option>CHI4U</option>
@@ -208,13 +211,12 @@
                         </select>
                     </div>
                     <div class="col-sm-3">
-                        <input class="form-control" type="number" max="100" min="1" name="course_5_grade" id="course_5_grade"
-                               placeholder="80" style="text-align: center">
+                        <input class="form-control" type="number" max="100" min="0" name="course_5_grade" id="course_5_grade"
+                               placeholder="80" style="text-align: center" required>
                     </div>
                     <div class="col-sm-3">
                         <select name="course_6" id="course_6" class="form-control" style="text-align-last: center; text-align: center"
-                                autocomplete="on">
-                            <option>NONE</option>
+                                autocomplete="on" required>
                             <option>ATC4M</option><option>ADA4M</option><option>AEA4O</option><option>ASM4M</option><option>AMU4M</option>
                             <option>AVI4M</option><option>BAT4M</option><option>BBB4M</option><option>BOH4M</option><option>CIA4U</option>
                             <option>CGW4U</option><option>CGU4M</option><option>CGO4M</option><option>CGR4M</option><option>CHI4U</option>
@@ -232,8 +234,8 @@
                         </select>
                     </div>
                     <div class="col-sm-3">
-                        <input class="form-control" type="number" max="100" min="1" name="course_6_grade" id="course_6_grade"
-                               placeholder="80" style="text-align: center">
+                        <input class="form-control" type="number" max="100" min="0" name="course_6_grade" id="course_6_grade"
+                               placeholder="80" style="text-align: center" required>
                     </div>
                 </div>
                 <div class="row"><div><h1></h1></div></div>
@@ -276,15 +278,25 @@
                     </div>
                     <div class="input-group col-sm-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Want Co-op</span>
+                            <span class="input-group-text">Applied to Co-op</span>
                         </div>
                         <select name="co-op" id="co-op" class="form-control" style="text-align: center">
                             <option>NO</option>
                             <option>YES</option>
                         </select>
                     </div>
+                    <div class="input-group col-sm-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Accepted</span>
+                        </div>
+                        <select name="accepted" id="accepted" class="form-control" style="text-align: center">
+                            <option>NO</option>
+                            <option>WAITLISTED</option>
+                            <option>YES</option>
+                        </select>
+                    </div>
                     <div class="col-sm">
-                        <input type="submit" value="Find Chances" class="btn btn-primary btn-block" id="search">
+                        <input type="submit" value="Submit" class="btn btn-primary btn-block" id="search">
                     </div>
                 </div>
             </div>
@@ -296,7 +308,7 @@
 <!-- Results are only shown once the user submits their query, so a Jinja2 block is put here to check the url
  Recent Searches are then shown -->
 
-{% if url_for(request.endpoint) == "/results" %}
+{% if url_for(request.endpoint) == "/reviews/results" %}
 <hr/>
 <div class="card rounded" style="margin-top: 2%">
     <h1 style="font-size: xx-large; text-align: center; margin-top: 0.5%">
@@ -306,6 +318,7 @@
     <table class="table table-striped table-hover table-dark" style="width: 100%">
         <thead class="thead-light" style="font-size: small; text-align: center; width: 100%">
         <tr>
+            <th scope="col">Name</th>
             <th scope="col">School</th>
             <th scope="col">Program</th>
             <th scope="col">Course 1</th>
@@ -320,18 +333,19 @@
             <th scope="col">Course 5 Grade</th>
             <th scope="col">Course 6</th>
             <th scope="col">Course 6 Grade</th>
+            <th scope="col">Co-op</th>
             <th scope="col">AP</th>
             <th scope="col">IB</th>
-            <th scope="col">Missing Courses</th>
-            <th scope="col"> ECs Level </th>
-            <th scope="col">Chances</th>
+            <th scope="col">ECs</th>
+            <th scope="col">Accepted</th>
         </tr>
         </thead>
         <tbody style="font-size: small; text-align: center;
         margin: auto; width: 100%" id="user" class="table-striped">
         {% set x = namespace(value=1) %}
-        {% for user in userouts %}
+        {% for user in reviews %}
         <tr>
+            <td>{{ user.name }}</td>
             <td>{{ user.uni }}</td>
             <td>{{ user.program.title() }}</td>
             <td>{{ user.course_1 }}</td>
@@ -346,11 +360,11 @@
             <td>{{ user.course_5_g }}</td>
             <td>{{ user.course_6 }}</td>
             <td>{{ user.course_6_g }}</td>
+            <td>{{ user.coop }}</td>
             <td>{{ user.ap }}</td>
             <td>{{ user.ib }}</td>
-            <td>{{ user.missing_courses }}</td>
             <td>{{ user.ec_level }}</td>
-            <td>{{ user.chance }}</td>
+            <td>{{ user.accepted }}</td>
         </tr>
         {% set x.value = x.value + 1 %}
         {% endfor %}

@@ -1,15 +1,22 @@
-from data_models import Course, UserData, ReturnData, ScrapingData
+import json
+import re
+from typing import List
+
+from data_models import Course, UserData
+
 
 def parse_user_info(info: UserData):
     sum = 0
     total_score = 0
-    if info.courses != ScrapingData.req_courses:
-        ReturnData.entrance_chance = "NO CHANCE"
-        return ReturnData.entrance_chance
+
+    with open(f'programs/{info.program_of_choice}.json') as f:
+        req_data = json.loads(f.read())
+
     for i in info.courses:
-        sum += Course.grade
-    avg = sum / len(info.courses)
-    admavg = int(ScrapingData.admission_range.strip("min. %"))
+        sum += i.grade
+
+    avg = sum / len(info.courses) if len(info.courses) != 0 else 80
+    admavg = get_admission_avg(req_data)
     dif = admavg - avg
     if dif > 7:
         total_score += 3
@@ -22,21 +29,54 @@ def parse_user_info(info: UserData):
     elif dif < -3:
         total_score += 15
     x = len(info.extra_curriculars)
-    if 1 <= x <= 2:
+    if 0 <= x <= 2:
         total_score += 2
     elif 3 <= x <= 5:
         total_score += 5
     elif x > 5:
         total_score += 7
-    if info.is_ap == True or info.is_ib == True:
+    if info.is_ap is True or info.is_ib is True:
         total_score += 2
     if total_score >= 15:
-        ReturnData.entrance_chance = "HIGH CHANCE"
-        return ReturnData.entrance_chance
+        return "HIGH CHANCE"
     elif 15 > total_score >= 10:
-        ReturnData.entrance_chance = "MEDIUM CHANCE"
-        return ReturnData.entrance_chance
+        return "MEDIUM CHANCE"
     elif total_score < 10:
-        ReturnData.entrance_chance = "LOW CHANCE"
-        return ReturnData.entrance_chance
-    
+        return "LOW CHANCE"
+
+
+def get_missing_courses(program: str, courses: List[Course]) -> List[str]:
+    with open(f'programs/{program}.json') as f:
+        json_text = json.loads(f.read())
+        courses_needed = json_text.get('information').get('req_courses')
+
+        req_courses = []
+        for course in courses_needed:
+            req_courses.extend(get_course_code(course))
+
+        print(req_courses)
+
+        missing_courses = []
+        courses_taken = [course.name for course in courses]
+        for course in req_courses:
+            if course not in courses_taken:
+                missing_courses.append(course)
+
+        return missing_courses
+
+
+def get_course_code(given_course: str) -> List[str]:
+    return re.findall('[A-Z]{3}4[UCOM]', given_course)
+
+
+def get_ec_level(ecs: List[str]) -> str:
+    x = len(ecs)
+    if 0 <= x <= 2: return 'LOW'
+    elif 3 <= x <= 5: return 'DECENT'
+    elif x > 5: return 'IMPRESSIVE'
+
+
+def get_admission_avg(data):
+    avgs = re.findall(r'\d{2}', data.get('information').get('admission_range'))
+    avgs = [float(avg) for avg in avgs]
+    return max(avgs)
