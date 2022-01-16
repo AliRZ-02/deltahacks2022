@@ -3,12 +3,27 @@ from dataclasses import dataclass
 
 
 @dataclass
+class Course:
+    name: str
+    grade: float
+
+
+@dataclass
+class ExtraCurricular:
+    name: str
+    type: str
+    hours: float
+
+
+@dataclass
 class UserData:
-    courses: List[Dict[str, Any]]
-    extra_curriculars: List[Dict[str, Any]]
+    courses: List[Course]
+    extra_curriculars: List[ExtraCurricular]
     want_coop: bool = False
     program_of_choice: str = 'Mathematics'
-    is_ap_ib: bool = False
+    is_ap: bool = False
+    is_ib: bool = False
+    is_esl: bool = False
     location: Optional[str] = None
     are_international: bool = False
 
@@ -33,7 +48,7 @@ class ReturnData:
 
 
 @dataclass
-class Programs:
+class Program:
     name: str = 'NULL'
     link: str = 'NULL'
     information: Optional[ScrapingData] = None

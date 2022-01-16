@@ -1,7 +1,6 @@
 import json
 import re
 import time
-
 import bs4
 import os
 import data_models
@@ -20,6 +19,7 @@ chrome_options.add_argument('--disable-dev-shm-usage')
 
 browser = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH,
                                chrome_options=chrome_options)
+
 
 def get_program_info(url: str):
     browser.get(url)
@@ -107,7 +107,7 @@ def fetch_programs(url: str):
     for program_div in program_divs:
         try:
             time.sleep(1)
-            programs.append(data_models.Programs(
+            programs.append(data_models.Program(
                 program_div.find('a').text,
                 program_div.find('a').get('href'),
                 get_program_info(program_div.find('a').get('href'))
