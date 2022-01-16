@@ -166,7 +166,6 @@ def about():
 @app.route('/reviews', methods=['GET', 'POST'])
 def add_review():
     if request.method == 'POST':
-        print('HERE')
         name = request.form.get('name', 'User')
         uni = request.form.get('school', 'McMaster University')
         given_program = request.form.get('program', 'Arts & Science')
